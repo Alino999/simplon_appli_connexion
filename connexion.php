@@ -1,12 +1,11 @@
 <?php
 try {
     //connexion à la base de données
-    const user = "root";
-    const pass = "";
-    $db = new PDO ("mysql:host=localhost; dbname=simplon-appli", user, pass);
-  } catch (\Throwable $th) {
-    //afficher les erreures
+    $user = "root";
+    $pass = "";
+    $db = new PDO ("mysql:host=localhost; dbname=simplon-appli", $user, $pass);
+  } catch (Exception $th) {
+    //afficher les erreures cache le mot de passe
+    die("ERREUR: ".$th -> getMessage());
 }
 ?>
-
-

@@ -7,6 +7,9 @@
     <title>Listes des apprenant Simplon</title>
 </head>
 <body>
+    <?php
+    require_once "affichage.php"
+    ?>
     <header>
         <div id="logo">
             <a href="#">
@@ -56,24 +59,21 @@
                         </tr>
                     </thead>  
                     <tbody>
-                        <tr>
-                            <td>Doe</td>
-                            <td>Jonh</td>
-                            <td>johndoe@gmail.com</td>
-                            <td>12/12/1990</td>
-                            <td>Georgy</td>
-                            <td>Masculin</td>
-                            <td>Developpement web et web mobile</td>
-                        </tr>
-                        <tr>
-                          <td>Doe</td>
-                          <td>Jeanne</td>
-                          <td>jeannedoe@gmail.com</td>
-                          <td>28/01/1992</td>
-                          <td>Houston</td>
-                          <td>Feminin</td>
-                          <td>Developpement web et web mobile</td>
-                      </tr>
+
+                        
+                        <?php
+                        while($data = $recuperation -> fetch()) {
+                            echo "<tr>";
+                            echo "<td>".$data["Nom"]."</td>";
+                            echo "<td>".$data["Prenom"]."</td>";
+                            echo "<td>".$data["Email"]."</td>";
+                            echo "<td>".$data["Dates_de_naissance"]."</td>";
+                            echo "<td>Ouaga</td>";
+                            echo "<td>".$data["Sexe"]."</td>";
+                            echo "<td>Dev_web</td>";
+                            echo "</tr>";
+                        }
+                        ?>
                     </tbody>
                   </table>
             </div>
