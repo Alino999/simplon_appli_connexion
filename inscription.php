@@ -18,6 +18,74 @@
                  <!-- Background image for card set in CSS! -->
               </div>
               <div class="card-body">
+
+              <?php 
+                if(isset($_GET['reg_err']))
+                {
+                    $err = htmlspecialchars($_GET['reg_err']);
+
+                    switch($err)
+                    {
+                        case 'success':
+                        ?>
+                         <div class="alert alert-success" role="alert">
+                     <h4 class="alert-heading text-center">FELICITATION</h4>
+                  <p class="text-center">Votre inscription a été effectuée avec succès.</p>
+                              <hr>
+                     <p class="text-center"><a href="index.php">Acceder à votre compte</a></p>
+                        </div>
+                        <?php
+                        break;
+
+                        case 'password':
+                        ?>
+                            <div class="alert alert-danger" role="alert">
+                                <h4  class="text-center">Erreur !!! mot de passe incorrect</h4>
+                                <p  class="text-center">Merci de réessayer</p>
+                            </div>
+                        <?php
+                        break;
+
+                        case 'email':
+                        ?>
+                            <div class="alert alert-danger" role="alert">
+                                <h4 class="text-center">Erreur !!! Email non valide</Em></h4>
+                                <p class="text-center">Merci de réessayer</p>
+                            </div>
+                        <?php
+                        break;
+
+                        case 'email_length':
+                        ?>
+                             <div class="alert alert-danger" role="alert">
+                                <h4 class="text-center">Erreur !!! Email trop long</h4>
+                                <p class="text-center">Merci de réessayer</p>
+                            </div>
+                        <?php 
+                        break;
+
+                        case 'pseudo_length':
+                        ?>
+                             <div class="alert alert-danger" role="alert">
+                                <h4 class="text-center">Erreur !!! Nom d'utlisateur trop long</h4>
+                                <p>Merci de réessayer</p>
+                            </div>
+                        <?php 
+                        case 'already':
+                        ?>
+                            <div class="alert alert-danger" role="alert">
+                                <h4 class="text-center">Erreur Compte déjà existant</h4>
+                              
+                            </div>
+                        <?php 
+
+                    }
+                }
+                ?>
+
+
+
+
                 <h5 class="card-title text-center"><span style="font-weight: bolder; color: red;">INSCRIPTION</span></h5>
                 <form class="form-signin" action="traitementinscription.php" method="POST">
                   <div class="form-label-group">
@@ -34,6 +102,10 @@
     
                   <div class="form-label-group">
                     <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required>
+                    
+                  </div>
+                  <div class="form-label-group">
+                    <input type="password" name="password_retype" id="inputPassword" class="form-control" placeholder="Password" required>
                     
                   </div>
                   <div>
